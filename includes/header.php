@@ -18,7 +18,7 @@ $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vault – Beheer jouw gamecollectie">
+    <meta name="description" content="Vault - Beheer jouw gamecollectie">
     <title><?= htmlspecialchars($pageTitle ?? 'Vault') ?></title>
 
     <!-- Bootstrap 5 -->
