@@ -5,7 +5,7 @@ $root  = str_repeat('../', max(0, $depth - 1));
 ?>
 </main>
 
-<!-- ── Footer ──────────────────────────────────────────────── -->
+<!Footer>
 <footer class="gv-footer">
     <div class="container">
         <div class="row align-items-center gy-3">
@@ -39,10 +39,10 @@ $root  = str_repeat('../', max(0, $depth - 1));
     </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!Bootstrap JS>
 <script src="<?= $root ?>assets/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JS -->
+<!Custom JS>
 <script src="<?= $root ?>assets/js/main.js"></script>
 
 </body>

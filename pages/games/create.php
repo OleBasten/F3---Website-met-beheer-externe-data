@@ -12,7 +12,7 @@ $platforms = $repository->getAllPlatforms();
 $errors    = [];
 $old       = [];
 
-// ── Verwerk POST ─────────────────────────────────────────────
+//Verwerk POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $old = $_POST;
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['cover_url'] = 'Voer een geldige URL in.';
     }
 
-    // Geen fouten → opslaan
+    //Geen fouten → opslaan
     if (empty($errors)) {
         $id = $repository->create([
             'title'        => $title,
@@ -67,7 +67,7 @@ $pageTitle = 'Game toevoegen – Vault';
 require_once '../../includes/header.php';
 ?>
 
-    <!-- ── Formulier ───────────────────────────────────────────── -->
+    <!Formulier>
     <div class="container gv-form-page">
 
         <div class="gv-form-header">
@@ -85,12 +85,12 @@ require_once '../../includes/header.php';
 
         <div class="row g-4">
 
-            <!-- Formulier kolom -->
+            <!Formulier kolom>
             <div class="col-lg-8">
                 <div class="gv-form-card fade-up">
                     <form method="POST" novalidate>
 
-                        <!-- Titel -->
+                        <!Titel>
                         <div class="mb-4">
                             <label for="title" class="form-label">Titel *</label>
                             <input type="text" id="title" name="title"
@@ -103,7 +103,7 @@ require_once '../../includes/header.php';
                             <?php endif; ?>
                         </div>
 
-                        <!-- Beschrijving -->
+                        <!Beschrijving>
                         <div class="mb-4">
                             <label for="description" class="form-label">Beschrijving</label>
                             <textarea id="description" name="description"
@@ -111,7 +111,7 @@ require_once '../../includes/header.php';
                                       placeholder="Korte omschrijving van de game…"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
                         </div>
 
-                        <!-- Genre + Platform -->
+                        <!Genre + Platform>
                         <div class="row g-3 mb-4">
                             <div class="col-sm-6">
                                 <label for="genre_id" class="form-label">Genre</label>
@@ -139,7 +139,7 @@ require_once '../../includes/header.php';
                             </div>
                         </div>
 
-                        <!-- Jaar + Rating -->
+                        <!Jaar + Rating>
                         <div class="row g-3 mb-4">
                             <div class="col-sm-6">
                                 <label for="release_year" class="form-label">Jaar van uitgifte</label>
@@ -171,7 +171,7 @@ require_once '../../includes/header.php';
                             </div>
                         </div>
 
-                        <!-- Cover URL -->
+                        <!Cover URL>
                         <div class="mb-4">
                             <label for="cover_url" class="form-label">Cover URL</label>
                             <input type="url" id="cover_url" name="cover_url"
@@ -189,7 +189,7 @@ require_once '../../includes/header.php';
                                      max-height:180px;border-radius:10px;margin-top:.75rem;object-fit:cover;">
                         </div>
 
-                        <!-- Knoppen -->
+                        <!Knoppen>
                         <div class="d-flex gap-3 flex-wrap pt-2">
                             <button type="submit" class="gv-btn-primary" style="font-size:.95rem;padding:.65rem 1.5rem;">
                                 <i class="bi bi-floppy"></i> Game opslaan
@@ -203,7 +203,7 @@ require_once '../../includes/header.php';
                 </div>
             </div>
 
-            <!-- Tips sidebar -->
+            <!Tips sidebar>
             <div class="col-lg-4 fade-up fade-up-1">
                 <div class="gv-form-card" style="padding:1.75rem;">
                     <h5 style="font-family:var(--font-display);font-weight:700;margin-bottom:1rem;">

@@ -12,7 +12,7 @@ class ApiService
         $this->baseUrl = RAWG_BASE_URL;
     }
 
-    // ── Private helpers ──────────────────────────────────────
+    //Private helpers
 
     private function get(string $endpoint, array $params = []): ?array
     {
@@ -37,7 +37,7 @@ class ApiService
         return json_decode($response, true);
     }
 
-    // ── Public methodes ──────────────────────────────────────
+    //Public methodes
 
     public function searchGames(string $query, int $pageSize = 12): array
     {
@@ -50,7 +50,7 @@ class ApiService
             return [];
         }
 
-        // JSON omzetten naar bruikbare arrays (Week 4)
+        //JSON omzetten naar bruikbare arrays (Week 4)
         return array_map(function (array $item): array {
             return [
                 'rawg_id'      => $item['id']                          ?? null,

@@ -17,7 +17,7 @@ if (!$game) {
     exit;
 }
 
-// ── Verwerk POST (bevestiging) ───────────────────────────────
+//Verwerk POST (bevestiging)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
     $title = $game->title;
     $repository->delete((int)$id);

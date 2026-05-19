@@ -7,7 +7,7 @@ require_once '../../classes/GameRepository.php';
 $pdo        = Database::getInstance();
 $repository = new GameRepository($pdo);
 
-// Valideer & haal id op
+//Valideer & haal id op
 $id   = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $game = $id ? $repository->getById((int)$id) : null;
 
@@ -21,7 +21,7 @@ $pageTitle = htmlspecialchars($game->title) . ' – Vault';
 require_once '../../includes/header.php';
 ?>
 
-    <!-- ── Breadcrumb ──────────────────────────────────────────── -->
+    <!Breadcrumb>
     <div style="background:var(--bg-surface);border-bottom:1px solid var(--border);padding:.75rem 0;">
         <div class="container">
             <p class="gv-breadcrumb mb-0">
@@ -32,7 +32,7 @@ require_once '../../includes/header.php';
         </div>
     </div>
 
-    <!-- ── Detail hero ─────────────────────────────────────────── -->
+    <!Detail hero>
     <div class="container gv-detail-hero">
         <div class="row g-5 align-items-start">
 
@@ -50,10 +50,10 @@ require_once '../../includes/header.php';
                 </div>
             </div>
 
-            <!-- Info -->
+            <!Info>
             <div class="col-lg-7 fade-up fade-up-1">
 
-                <!-- Badges -->
+                <!Badges>
                 <div class="d-flex flex-wrap gap-2 mb-3">
                     <?php if ($game->genreName): ?>
                         <span class="gv-badge"><i class="bi bi-tag"></i> <?= htmlspecialchars($game->genreName) ?></span>
@@ -70,7 +70,7 @@ require_once '../../includes/header.php';
                     <?= htmlspecialchars($game->title) ?>
                 </h1>
 
-                <!-- Rating -->
+                <!Rating>
                 <?php if ($game->rating): ?>
                     <div class="d-flex align-items-center gap-3 mb-1.5" style="margin-bottom:1.5rem;">
                         <div>
@@ -83,14 +83,14 @@ require_once '../../includes/header.php';
                     </div>
                 <?php endif; ?>
 
-                <!-- Beschrijving -->
+                <!Beschrijving>
                 <?php if ($game->description): ?>
                     <p style="color:var(--text-secondary);line-height:1.75;font-size:1rem;margin-bottom:2rem;">
                         <?= nl2br(htmlspecialchars($game->description)) ?>
                     </p>
                 <?php endif; ?>
 
-                <!-- Acties -->
+                <!Acties>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="edit.php?id=<?= $game->id ?>" class="gv-btn-primary">
                         <i class="bi bi-pencil"></i> Bewerken
@@ -103,7 +103,7 @@ require_once '../../includes/header.php';
                     </a>
                 </div>
 
-                <!-- Meta info -->
+                <!Meta info>
                 <div class="d-flex flex-wrap gap-4 mt-4 pt-4" style="border-top:1px solid var(--border);">
                     <div>
                         <div style="font-size:.72rem;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Toegevoegd</div>

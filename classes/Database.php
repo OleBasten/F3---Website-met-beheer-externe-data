@@ -3,10 +3,10 @@ require_once __DIR__ . '/../config/database.php';
 
 class Database
 {
-    // Singleton: slechts één verbinding per request
+    //Singleton: slechts één verbinding per request
     private static ?PDO $instance = null;
 
-    // Constructor privé → niemand kan `new Database()` doen
+    //Constructor privé → niemand kan `new Database()` doen
     private function __construct() {}
 
     /**
@@ -32,7 +32,7 @@ class Database
             try {
                 self::$instance = new PDO($dsn, DB_USER, DB_PASS, $options);
             } catch (PDOException $e) {
-                // Verberg technische details voor eindgebruikers
+                //Verberg technische details voor eindgebruikers
                 error_log('Database verbinding mislukt: ' . $e->getMessage());
                 die(json_encode(['error' => 'Kan geen verbinding maken met de database.']));
             }

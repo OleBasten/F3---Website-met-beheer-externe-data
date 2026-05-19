@@ -8,7 +8,7 @@ require_once '../../classes/GameRepository.php';
 $pdo        = Database::getInstance();
 $repository = new GameRepository($pdo);
 
-// Zoek- en sorteerparameters – Week 6: SQL LIKE + ORDER BY
+//Zoek- en sorteerparameters – Week 6: SQL LIKE + ORDER BY
 $search  = trim($_GET['search']  ?? '');
 $orderBy = $_GET['order']  ?? 'g.title';
 
@@ -20,7 +20,7 @@ $pageTitle = 'Games – Vault';
 require_once '../../includes/header.php';
 ?>
 
-    <!-- ── Page header ─────────────────────────────────────────── -->
+    <!Page header>
     <div class="gv-page-header">
         <div class="container">
             <div class="gv-page-header-inner">
@@ -42,7 +42,7 @@ require_once '../../includes/header.php';
                 </a>
             </div>
 
-            <!-- Zoekbalk + sortering -->
+            <!Zoekbalk + sortering>
             <form method="GET" class="mt-4 d-flex flex-wrap gap-3 align-items-center">
                 <div class="gv-search-wrap flex-grow-1" style="max-width:380px;">
                     <i class="bi bi-search"></i>
@@ -68,7 +68,7 @@ require_once '../../includes/header.php';
         </div>
     </div>
 
-    <!-- ── Games grid ──────────────────────────────────────────── -->
+    <!Games grid>
     <div class="container" style="padding-bottom:5rem;">
 
         <?php if (empty($games)): ?>
@@ -88,7 +88,7 @@ require_once '../../includes/header.php';
                          style="animation-delay:<?= min($i * .05, .4) ?>s">
                         <div class="gv-card">
 
-                            <!-- Cover -->
+                            <!Cover>
                             <div class="gv-card-img-wrap">
                                 <?php if ($game->coverUrl): ?>
                                     <img src="<?= htmlspecialchars($game->coverUrl) ?>"
@@ -108,7 +108,7 @@ require_once '../../includes/header.php';
                                 <?php endif; ?>
                             </div>
 
-                            <!-- Info -->
+                            <!Info>
                             <div class="gv-card-body">
                                 <?php if ($game->genreName): ?>
                                     <p class="gv-card-genre"><?= htmlspecialchars($game->genreName) ?></p>
@@ -125,7 +125,7 @@ require_once '../../includes/header.php';
                                 </div>
                             </div>
 
-                            <!-- Acties -->
+                            <!Acties>
                             <div class="gv-card-actions" style="flex-wrap:wrap;">
                                 <a href="show.php?id=<?= $game->id ?>"
                                    class="gv-btn-outline gv-btn-sm flex-fill justify-content-center">

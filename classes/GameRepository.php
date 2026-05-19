@@ -11,7 +11,7 @@ class GameRepository
         $this->pdo = $pdo;
     }
 
-    // ── READ ─────────────────────────────────────────────────
+    //READ
 
     public function getAll(string $search = '', string $orderBy = 'g.title'): array
     {
@@ -64,7 +64,7 @@ class GameRepository
         return $row ? new Game($row) : null;
     }
 
-    // ── CREATE ───────────────────────────────────────────────
+    //CREATE
 
     public function create(array $data): int
     {
@@ -87,7 +87,7 @@ class GameRepository
         return (int) $this->pdo->lastInsertId();
     }
 
-    // ── UPDATE ───────────────────────────────────────────────
+    //UPDATE
 
     public function update(int $id, array $data): bool
     {
@@ -115,7 +115,7 @@ class GameRepository
         ]);
     }
 
-    // ── DELETE ───────────────────────────────────────────────
+    //DELETE
 
     public function delete(int $id): bool
     {
@@ -123,7 +123,7 @@ class GameRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    // ── HELPERS ──────────────────────────────────────────────
+    //HELPERS
 
     public function getAllGenres(): array
     {

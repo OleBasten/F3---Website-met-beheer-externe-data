@@ -14,7 +14,7 @@ $query   = trim($_GET['q'] ?? '');
 $results = [];
 $error   = null;
 
-// ── Zoek via RAWG API ────────────────────────────────────────
+//Zoek via RAWG API
 if ($query !== '') {
     $results = $apiService->searchGames($query, 12);
     if ($results === null) {
@@ -23,7 +23,7 @@ if ($query !== '') {
     }
 }
 
-// ── Importeer een game vanuit RAWG ────────────────────────────
+//Importeer een game vanuit RAWG
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rawg_id'])) {
     $rawgId  = filter_input(INPUT_POST, 'rawg_id', FILTER_VALIDATE_INT);
     $details = $rawgId ? $apiService->getGameDetails((int)$rawgId) : null;
@@ -68,7 +68,7 @@ $pageTitle = 'API Zoeken – Vault';
 require_once '../../includes/header.php';
 ?>
 
-    <!-- ── Page header ─────────────────────────────────────────── -->
+    <!Page header>
     <div class="gv-page-header">
         <div class="container">
             <div class="gv-page-header-inner">
@@ -88,7 +88,7 @@ require_once '../../includes/header.php';
                 </a>
             </div>
 
-            <!-- Zoekformulier -->
+            <!Zoekformulier>
             <form method="GET" class="mt-4">
                 <div class="d-flex flex-wrap gap-3 align-items-end">
                     <div class="flex-grow-1" style="max-width:480px;">
@@ -114,11 +114,11 @@ require_once '../../includes/header.php';
         </div>
     </div>
 
-    <!-- ── Content ──────────────────────────────────────────────── -->
+    <!Content>
     <div class="container" style="padding-bottom:5rem;">
 
         <?php if ($error): ?>
-            <!-- API fout -->
+            <!API fout>
             <div class="gv-empty">
                 <i class="bi bi-wifi-off" style="color:var(--danger);"></i>
                 <h3>API niet bereikbaar</h3>
@@ -137,7 +137,7 @@ require_once '../../includes/header.php';
                     Importeer games met één klik in jouw eigen collectie.</p>
             </div>
 
-            <!-- Stappenuitleg -->
+            <!Stappenuitleg>
             <div class="row g-3 mt-2" style="max-width:860px;margin-left:auto;margin-right:auto;">
                 <?php
                 $steps = [
@@ -165,7 +165,7 @@ require_once '../../includes/header.php';
             </div>
 
         <?php elseif (empty($results)): ?>
-            <!-- Geen resultaten -->
+            <!Geen resultaten>
             <div class="gv-empty">
                 <i class="bi bi-search"></i>
                 <h3>Geen resultaten voor "<?= htmlspecialchars($query) ?>"</h3>
@@ -173,7 +173,7 @@ require_once '../../includes/header.php';
             </div>
 
         <?php else: ?>
-            <!-- Resultaten -->
+            <!Resultaten>
             <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.5rem;">
                 <strong style="color:var(--text-secondary);"><?= count($results) ?></strong>
                 resultaten voor "<strong style="color:var(--accent);"><?= htmlspecialchars($query) ?></strong>"
@@ -199,7 +199,7 @@ require_once '../../includes/header.php';
                                 <?php endif; ?>
                             </div>
 
-                            <!-- Info -->
+                            <!Info>
                             <div class="gv-api-card-body flex-grow-1 d-flex flex-column">
                                 <?php if (!empty($result['genres'])): ?>
                                     <p class="gv-card-genre"><?= htmlspecialchars($result['genres'][0]) ?></p>
@@ -209,7 +209,7 @@ require_once '../../includes/header.php';
                                     <?= htmlspecialchars($result['title']) ?>
                                 </h3>
 
-                                <!-- Meta -->
+                                <!Meta>
                                 <div class="d-flex justify-content-between align-items-center mt-auto"
                                      style="font-size:.78rem;color:var(--text-muted);padding-top:.6rem;
                                         border-top:1px solid var(--border);margin-top:.6rem;">
@@ -230,7 +230,7 @@ require_once '../../includes/header.php';
                                     <?php endif; ?>
                                 </div>
 
-                                <!-- Platform tags -->
+                                <!Platform tags>
                                 <?php if (!empty($result['platforms'])): ?>
                                     <div class="d-flex flex-wrap gap-1 mt-2">
                                         <?php foreach (array_slice($result['platforms'], 0, 3) as $platform): ?>
@@ -243,7 +243,7 @@ require_once '../../includes/header.php';
                                     </div>
                                 <?php endif; ?>
 
-                                <!-- Importeer knop -->
+                                <!Importeer knop>
                                 <form method="POST" class="mt-3">
                                     <input type="hidden" name="rawg_id" value="<?= (int)$result['rawg_id'] ?>">
                                     <button type="submit" class="gv-btn-primary gv-btn-sm w-100 justify-content-center">
