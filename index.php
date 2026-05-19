@@ -16,7 +16,7 @@ $pageTitle = 'Vault – Beheer jouw gamecollectie';
 require_once 'includes/header.php';
 ?>
 
-    <!-- ── Hero ───────────────────────────────────────────────── -->
+    <!Hero>
     <section class="gv-hero">
         <div class="container">
             <div class="row align-items-center">
@@ -58,7 +58,7 @@ require_once 'includes/header.php';
                     </div>
                 </div>
 
-                <!-- Right: decoratieve game-cards -->
+                <!decoratieve game-cards>
                 <div class="col-lg-6 d-none d-lg-flex justify-content-center fade-up fade-up-2">
                     <div class="gv-hero-grid">
                         <?php
@@ -86,7 +86,7 @@ require_once 'includes/header.php';
         </div>
     </section>
 
-    <!-- ── Recente games ───────────────────────────────────────── -->
+    <!Recente games>
     <section class="gv-section">
         <div class="container">
 
@@ -115,7 +115,7 @@ require_once 'includes/header.php';
                         <div class="col-sm-6 col-xl-3 fade-up" style="animation-delay:<?= $i * .07 ?>s">
                             <div class="gv-card">
 
-                                <!-- Cover afbeelding -->
+                                <!Cover afbeelding>
                                 <div class="gv-card-img-wrap">
                                     <?php if ($game->coverUrl): ?>
                                         <img src="<?= htmlspecialchars($game->coverUrl) ?>"
@@ -135,7 +135,7 @@ require_once 'includes/header.php';
                                     <?php endif; ?>
                                 </div>
 
-                                <!-- Body -->
+                                <!Body>
                                 <div class="gv-card-body">
                                     <?php if ($game->genreName): ?>
                                         <p class="gv-card-genre"><?= htmlspecialchars($game->genreName) ?></p>
@@ -155,7 +155,7 @@ require_once 'includes/header.php';
                                     </div>
                                 </div>
 
-                                <!-- Acties -->
+                                <!Acties>
                                 <div class="gv-card-actions">
                                     <a href="pages/games/show.php?id=<?= $game->id ?>"
                                        class="gv-btn-outline gv-btn-sm flex-fill justify-content-center">
@@ -175,7 +175,7 @@ require_once 'includes/header.php';
         </div>
     </section>
 
-    <!-- ── Feature blokken (over het project) ──────────────────── -->
+    <!Feature blokken (over het project)>
     <section class="gv-section" style="padding-top:0">
         <div class="container">
             <div class="row g-4">
