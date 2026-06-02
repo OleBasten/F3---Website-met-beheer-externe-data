@@ -12,10 +12,10 @@ require_once '../api/api.php';
 <body>
 <div class="container">
     <div class="header">
-        <h1>🎮 Game Publisher Database</h1>
+        <h1> Game Publisher Database</h1>
         <p>Alle games van een publisher - RAWG API Database</p>
         <div class="api-info">
-            📡 Gebruikt RAWG API - Meer dan 500,000+ games in de database
+             Gebruikt RAWG API - Meer dan 500,000+ games in de database
         </div>
     </div>
 
@@ -23,10 +23,10 @@ require_once '../api/api.php';
         <div class="search-box">
             <label for="publisherInput" class="sr-only">Publisher naam</label>
             <input type="text" id="publisherInput" placeholder="Voer publisher naam in (bijv: Nintendo, Sony, Rockstar Games, EA, Ubisoft...)" />
-            <button onclick="searchGames()">🔍 Zoek Games</button>
+            <button onclick="searchGames()"> Zoek Games</button>
         </div>
         <div class="popular-publishers">
-            <h3>🔥 Populaire Publishers:</h3>
+            <h3> Populaire Publishers:</h3>
             <div class="publisher-tags">
                 <span class="publisher-tag" onclick="quickSearch('Nintendo')">Nintendo</span>
                 <span class="publisher-tag" onclick="quickSearch('Sony Interactive Entertainment')">Sony</span>
@@ -73,7 +73,7 @@ require_once '../api/api.php';
         const publisher = publisherInput.value.trim();
 
         if (!publisher) {
-            showError('❌ Voer een publisher naam in!');
+            showError(' Voer een publisher naam in!');
             return;
         }
 
@@ -88,13 +88,13 @@ require_once '../api/api.php';
                 updateStats(data.games, data.publisher, data.total);
             } else {
                 showError(data.message || 'Geen games gevonden');
-                document.getElementById('content').innerHTML = '<div class="no-results">😕 Geen publisher gevonden. Controleer de naam of probeer een andere publisher!</div>';
+                document.getElementById('content').innerHTML = '<div class="no-results"> Geen publisher gevonden. Controleer de naam of probeer een andere publisher!</div>';
                 document.getElementById('stats').style.display = 'none';
             }
         } catch (error) {
             console.error('Error:', error);
             showError('Fout bij het laden van data. Probeer het later opnieuw.');
-            document.getElementById('content').innerHTML = '<div class="no-results">❌ Er is een fout opgetreden.</div>';
+            document.getElementById('content').innerHTML = '<div class="no-results"> Er is een fout opgetreden.</div>';
             document.getElementById('stats').style.display = 'none';
         }
     }
@@ -108,7 +108,7 @@ require_once '../api/api.php';
         const contentDiv = document.getElementById('content');
 
         if (!games || games.length === 0) {
-            contentDiv.innerHTML = '<div class="no-results">😕 Geen games gevonden voor deze publisher</div>';
+            contentDiv.innerHTML = '<div class="no-results"> Geen games gevonden voor deze publisher</div>';
             return;
         }
 
@@ -117,9 +117,9 @@ require_once '../api/api.php';
                 <img class="game-image" src="${game.background_image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop'}" alt="${game.name.replace(/'/g, "\\'")}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop'">
                 <div class="game-info">
                     <div class="game-title">${game.name}</div>
-                    <div class="game-publisher">📢 ${publisher.name}</div>
-                    <div class="game-year">📅 ${game.released ? game.released.split('-')[0] : 'Release datum onbekend'}</div>
-                    ${game.rating ? `<div class="game-rating">⭐ ${game.rating}/5</div>` : ''}
+                    <div class="game-publisher"> ${publisher.name}</div>
+                    <div class="game-year"> ${game.released ? game.released.split('-')[0] : 'Release datum onbekend'}</div>
+                    ${game.rating ? `<div class="game-rating"> ${game.rating}/5</div>` : ''}
                 </div>
             </div>
         `).join('');
@@ -133,9 +133,9 @@ require_once '../api/api.php';
 
         statsDiv.style.display = 'block';
         statsDiv.innerHTML = `
-            <h3>📊 Statistieken voor ${publisher.name}</h3>
-            <p>🎮 Getoonde games: ${games.length} van de ${total} totaal | 📅 Jaar range: ${uniqueYears[0] || 'N/A'} - ${uniqueYears[uniqueYears.length-1] || 'N/A'} | ⭐ Gemiddelde rating: ${avgRating || 'N/A'}/5</p>
-            <p>💾 Data bron: RAWG API Database | 🔄 Laatste update: ${new Date().toLocaleString()}</p>
+            <h3> Statistieken voor ${publisher.name}</h3>
+            <p> Getoonde games: ${games.length} van de ${total} totaal |  Jaar range: ${uniqueYears[0] || 'N/A'} - ${uniqueYears[uniqueYears.length-1] || 'N/A'} | ⭐ Gemiddelde rating: ${avgRating || 'N/A'}/5</p>
+            <p> Data bron: RAWG API Database |  Laatste update: ${new Date().toLocaleString()}</p>
         `;
     }
 
@@ -155,13 +155,13 @@ require_once '../api/api.php';
             modalBody.innerHTML = `
                 <div style="text-align: center;">
                     ${game.background_image ? `<img src="${game.background_image}" style="width: 100%; border-radius: 10px; margin-bottom: 15px;" alt="${game.name}">` : ''}
-                    <p><strong>📅 Release datum:</strong> ${game.released || 'Onbekend'}</p>
-                    <p><strong>⭐ Rating:</strong> ${game.rating || 'N/A'}/5 (${game.ratings_count || 0} stemmen)</p>
-                    <p><strong>🎭 Genres:</strong> ${game.genres ? game.genres.map(g => g.name).join(', ') : 'N/A'}</p>
-                    <p><strong>🎮 Platforms:</strong> ${game.platforms ? game.platforms.slice(0, 5).map(p => p.platform.name).join(', ') : 'N/A'}</p>
-                    <p><strong>👨‍💻 Ontwikkelaars:</strong> ${game.developers ? game.developers.map(d => d.name).join(', ') : 'N/A'}</p>
-                    <p><strong>📢 Publishers:</strong> ${game.publishers ? game.publishers.map(p => p.name).join(', ') : 'N/A'}</p>
-                    <p><strong>📝 Beschrijving:</strong></p>
+                    <p><strong> Release datum:</strong> ${game.released || 'Onbekend'}</p>
+                    <p><strong> Rating:</strong> ${game.rating || 'N/A'}/5 (${game.ratings_count || 0} stemmen)</p>
+                    <p><strong> Genres:</strong> ${game.genres ? game.genres.map(g => g.name).join(', ') : 'N/A'}</p>
+                    <p><strong> Platforms:</strong> ${game.platforms ? game.platforms.slice(0, 5).map(p => p.platform.name).join(', ') : 'N/A'}</p>
+                    <p><strong> Ontwikkelaars:</strong> ${game.developers ? game.developers.map(d => d.name).join(', ') : 'N/A'}</p>
+                    <p><strong> Publishers:</strong> ${game.publishers ? game.publishers.map(p => p.name).join(', ') : 'N/A'}</p>
+                    <p><strong> Beschrijving:</strong></p>
                     <p style="text-align: left;">${game.description_raw || 'Geen beschrijving beschikbaar'}</p>
                     ${game.website ? `<p><strong>🔗 Website:</strong> <a href="${game.website}" target="_blank">${game.website}</a></p>` : ''}
                     <p><strong>🎮 Metacritic score:</strong> ${game.metacritic || 'N/A'}</p>
@@ -176,7 +176,7 @@ require_once '../api/api.php';
         document.getElementById('content').innerHTML = `
             <div class="loading">
                 <div class="spinner"></div>
-                <p>🔄 Zoeken in RAWG database...</p>
+                <p> Zoeken in RAWG database...</p>
                 <p style="font-size: 0.9em; margin-top: 10px;">Doorzoeken van 500,000+ games...</p>
             </div>
         `;
@@ -186,7 +186,7 @@ require_once '../api/api.php';
     function showError(message) {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
-        errorDiv.innerHTML = `⚠️ ${message}`;
+        errorDiv.innerHTML = `⚠ ${message}`;
         const container = document.querySelector('.container');
         const existingError = document.querySelector('.error-message');
         if (existingError) existingError.remove();
