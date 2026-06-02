@@ -6,6 +6,9 @@ $root  = str_repeat('../', max(0, $depth - 1));
 </main>
 
 <!Footer>
+<p class="gv-footer-copy text-center small mt-2">
+    <a href="https://rawg.io" target="_blank" rel="noopener noreferrer">RAWG</a>
+</p>
 <footer class="gv-footer">
     <div class="container">
         <div class="row align-items-center gy-3">
