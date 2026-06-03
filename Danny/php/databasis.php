@@ -1,5 +1,5 @@
 <?php
-// class voor database aanmaken
+// class voor database aanmaken v2
 class Database {
     private static ?PDO $instance = null;
     private string $dsn;
