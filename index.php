@@ -27,7 +27,7 @@ require_once 'includes/header.php';
                     </h1>
 
                     <p class="gv-hero-sub fade-up fade-up-2">
-                        Vault helpt je je gamecollectie bij te houden.
+                        Deze Vault helpt je je gamecollectie bij te houden.
                         Voeg games toe, pas ze aan en ontdek nieuwe titels
                         via de RAWG API.
                     </p>
