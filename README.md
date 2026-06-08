@@ -44,7 +44,7 @@ Configureer de databasegegevens in classes/Database.php.
 Open de applicatie via de browser op localhost/Vault.
 
 Projectinformatie
-Opleiding: MBO ICT Software Development
+Opleiding: MBO, ICT, Software Development
 
 Instelling: Koning Willem I College
 
