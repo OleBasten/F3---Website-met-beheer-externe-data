@@ -32,6 +32,8 @@ includes/: Bevat herbruikbare componenten zoals de header en footer.
 
 pages/: Bevat de specifieke pagina's voor het beheren en bekijken van games.
 
+leeftijds filter die er voor zorgt dat je geen ongewenste resultaten te zien krijgt.
+
 index.php: De landingspagina van de applicatie.
 
 Installatie
