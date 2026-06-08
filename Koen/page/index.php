@@ -15,7 +15,7 @@ require_once '../api/api.php';
         <h1> Game Publisher Database</h1>
         <p>Alle games van een publisher - RAWG API Database</p>
         <div class="api-info">
-             Gebruikt RAWG API - Meer dan 500,000+ games in de database
+            Gebruikt RAWG API - Meer dan 500,000+ games in de database
         </div>
     </div>
 
@@ -216,11 +216,43 @@ require_once '../api/api.php';
     });
 
     window.addEventListener('load', () => {
-        console.log('🎮 Game Publisher Database geladen - PHP Backend met RAWG API');
+        console.log(' Game Publisher Database geladen - PHP Backend met RAWG API');
         setTimeout(() => {
             quickSearch('Nintendo');
         }, 500);
     });
 </script>
+<?php
+// config
+$conn = new mysqli("localhost", "root", "", "test");
+if ($conn->connect_error) die("Connection failed");
+
+// CRUD actions
+$id = $_POST['id'] ?? $_GET['id'] ?? 0;
+$name = $_POST['name'] ?? '';
+$price = $_POST['price'] ?? 0;
+$action = $_POST['action'] ?? $_GET['action'] ?? '';
+
+if ($action == 'create' && $name && $price)
+    $conn->query("INSERT INTO products (name, price) VALUES ('$name', $price)");
+elseif ($action == 'update' && $id && $name && $price)
+    $conn->query("UPDATE products SET name='$name', price=$price WHERE id=$id");
+elseif ($action == 'delete' && $id)
+    $conn->query("DELETE FROM products WHERE id=$id");
+
+// Read & display
+$result = $conn->query("SELECT * FROM products");
+echo "<h2>Products</h2><form method='post'><input name='name' placeholder='Name'><input name='price' placeholder='Price'><button name='action' value='create'>Add</button></form>";
+while ($row = $result->fetch_assoc()) {
+    echo "<form method='post' style='display:inline-block;margin:5px'>";
+    echo "<input name='id' value='{$row['id']}' type='hidden'>";
+    echo "<input name='name' value='{$row['name']}'>";
+    echo "<input name='price' value='{$row['price']}' size='5'>";
+    echo "<button name='action' value='update'>Update</button>";
+    echo "<button name='action' value='delete'>Delete</button>";
+    echo "</form>";
+}
+$conn->close();
+?>
 </body>
 </html>

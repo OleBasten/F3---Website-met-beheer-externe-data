@@ -1,6 +1,6 @@
 <?php
 // API Configuratie
-define('RAWG_API_KEY', 'd5ab7100d93c4fc7aceffb1c4c508235');
+define('RAWG_API_KEY', 'd741b0eb0ba14124aa3f598c1e69f070');
 define('RAWG_BASE_URL', 'https://api.rawg.io/api');
 
 // Functie om API calls te maken
